@@ -1,0 +1,117 @@
+<?php
+
+if(!$this->getContentId()): 
+    echo Mage::helper('connector')->__('Please, select item');
+ else: 
+    
+    $projects = $this->findAvailableLocales($this->getContentTypeId(), $this->getContentId(), $this->getWebsites());    
+    $contentItems = $this->getContentItems();
+    $contentType = $this->getContentTypeId();    
+    $localesCounter = 0;
+?>
+<?php if(sizeof($projects) > 0): ?>
+<div id="result">
+</div>
+<h2><?php echo $this->getTitle() ;?></h2>
+<h4><?php echo $this->__('Target stores and Locales'); ?></h4>
+<table>
+    <tbody>
+        <?php  foreach ($projects as $projectId => $projectData) :?>
+            <tr>
+                <td colspan="3">
+                    <b><?php echo $projectData['name'];?></b>
+                </td> 
+            </tr>
+            <?php  
+                if(sizeof($projectData['locales']))
+                foreach ($projectData['locales'] as $storeId => $locale): 
+                    $localesCounter++;
+                    $element_id = 'locales_' . $projectId . '_' . $storeId;
+                ?>
+            <tr>
+                <td <?php if(!is_null($locale['percent'])):?> colspan="3"<?php endif; ?>  nowrap>
+                    <input id="<?php echo $element_id;?>" class="locales" 
+                           type="checkbox" id="translations" 
+                           name="locales[<?php echo $projectId;?>][]" 
+                           value="<?php echo $storeId; ?>" 
+                           <?php if(!is_null($locale['percent'])) echo 'checked="checked"';?>
+                           />
+                    <label for='<?php echo $element_id;?>' style="display:inline;"> 
+                        <?php echo $locale['name'];?>
+                     </label>
+                </td> 
+                <?
+                    if(!is_null($locale['percent'])):
+                ?>
+                <td align="right">
+                   <img src="<?php echo $this->getStatusImageUrl ($locale['percent'], true) ;?>" style="vertical-align: top;" /> 
+                </td>
+                <td width="30">
+                    <span><?php echo $locale['percent'] . "%" ;?></span>
+                </td>
+                <? endif;?>
+            </tr>
+            <?php  endforeach; ?>       
+        <?php  endforeach; ?>       
+    </tbody>
+    <tfoot>
+        <?php
+            if($localesCounter>1):
+        ?>
+            <tr>
+                <td colspan="3">
+                    <p>
+                        <a href="javascript:void(0)" onclick="selectAll(this);">
+                            <span><?php echo Mage::helper('connector')->__('Check All'); ?></span>
+                            <span style="display:none"><?php echo Mage::helper('connector')->__('Uncheck All'); ?></span>
+                        </a>
+                    </p>
+                </td>
+            </tr>
+        <?php
+            else:
+        ?>
+            <tr><td colspan="3">&nbsp;</td></tr>
+        <?php    
+            endif;
+        ?>
+        <?php if ($this->getContentId()): ?>
+        <tr>
+            <td>
+                <?php $label = $this->__('Send to Smartling') ;?>
+                <?php echo $this->getButtonHtmlContent('upload-content', $label);?>
+            </td>
+            <td colspan="2">                
+                <?php echo $this->getButtonHtmlContent('download-content', $this->__('Download translation'));?>
+            </td>            
+        </tr>        
+        <?php endif; ?>
+    </tfoot>
+</table>
+    <?php if ($this->getContentId()): ?>
+<script type="text/javascript" src="<?php echo Mage::getBaseUrl('js') . 'smartling' . DS . 'content.js' ;?>">
+</script>
+<script type="text/javascript">      
+    Event.observe('upload-content', 'click', function(event) {
+       <?php $data = array('content_id' => $this->getContentId(), 'content_type' => $contentType); ?>    
+        var url = '<?php echo $this->getUrl('smartling/adminhtml_translator/uploadsingle', $data) ;?>';
+        var params = Form.serializeElements($$('input.locales'));
+        singleContentActions(url, params); 
+        Event.stop(event);
+    });
+
+     Event.observe('download-content', 'click', function(event) {
+       <?php $data = array('content_id' => $this->getContentId(), 'content_type' => $contentType); ?>    
+        var url = '<?php echo $this->getUrl('smartling/adminhtml_translator/downloadsingle', $data) ;?>';
+        var params = Form.serializeElements($$('input.locales'));
+        singleContentActions(url, params); 
+        Event.stop(event);            
+    });
+
+</script>
+    <?php endif; ?>
+<?php else: 
+    echo Mage::helper('connector')->__('Sorry. No one profile for this item is available.');
+?>
+<?php endif; ?>
+<?php endif; ?>

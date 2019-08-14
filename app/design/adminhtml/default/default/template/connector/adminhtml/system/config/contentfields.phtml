@@ -1,0 +1,14 @@
+<?php $values = $this->getValues(); ?>
+<input type="hidden" name="<?php echo $this->getNamePrefix() ;?>" value="" />
+<div style="overflow-y: scroll; height: 200px;">
+    <ul class="checkboxes">
+        <?php foreach ($values as $_option) :?>
+        <li>
+            <input type="checkbox" name="<?php echo $this->getNamePrefix() ;?>[]" value="<?php echo $_option['value']; ?>" 
+               <?php echo ($this->isChecked($_option['value'])) ? " checked='checked'" : ""; ?> />
+            <label for="<?php echo $this->getHtmlId() . '_' . $_option['value'] ?>"><?php echo $_option['label'] ;?></label>
+        </li>
+        <?php endforeach;?>
+
+    </ul>
+</div>

@@ -1,0 +1,33 @@
+<?php $url = $this->getServiceUrl(); ?>
+<script type = "text/javascript">
+    
+    function testConnection(){
+       var apiKey = $('key').getValue();
+       var projectId = $('project_id').getValue();
+       
+        new Ajax.Request('<?php echo $url; ?>', {
+            method: 'get',
+            parameters: {apiKey: apiKey, projectId: projectId},            
+            onComplete: function(transport){
+                var response = transport.responseText.evalJSON(true);
+                showMessage(response);
+            }        
+        });
+    } 
+    
+    function showMessage(response){
+        if (response.result == "SUCCESS"){
+            var className = "success-msg";
+        } else {
+            var className = "error-msg";
+        } 
+        var message = "<ul><li><span>" + response.message + "</span></li></ul>"
+        var block = "<li id='api-message' class='" + className + "'>" + message + "</li>";
+        $('api-message').replace(block);
+    }
+    
+</script>
+<?php echo $this->getButton() ;?>
+<ul class="messages">
+    <li id="api-message"></li>
+</ul>

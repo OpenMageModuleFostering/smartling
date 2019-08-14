@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<layout version="0.1.0">    
+    <connector_adminhtml_translator_all>
+        <reference name="head">
+            <action method="addJs">
+                <file>smartling/check_statuses.js</file>
+            </action>
+            <action method="addCss">
+                <stylesheet>smartling/StyleSheet/bars.css</stylesheet>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="core/template" template="connector/adminhtml/widget/grid/scripts_wraper.phtml" name="grid_scripts_wraper"/>
+            <block type="connector/adminhtml_content" name="all.content" />
+        </reference>
+    </connector_adminhtml_translator_all>
+    
+    <connector_adminhtml_translator_cmspage_index>
+        <reference name="content">
+            <block type = "connector/adminhtml_content_cmsPage" name = "cmspage.grid" />
+        </reference>
+    </connector_adminhtml_translator_cmspage_index>
+    
+    <connector_adminhtml_translator_cmspage_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="connector/adminhtml_content_cmsPage_grid" name="admin.cmspage.grid"/>
+        </block>
+    </connector_adminhtml_translator_cmspage_grid>
+    
+    <connector_adminhtml_translator_cmsblock_index>
+        <reference name="content">
+            <block type="connector/adminhtml_content_cmsBlock" name="cmsblock.grid" />
+        </reference>
+    </connector_adminhtml_translator_cmsblock_index>  
+        
+    <connector_adminhtml_translator_product_index>
+        <reference name="content">
+            <block type="connector/adminhtml_content_product" name="product.grid" />
+        </reference>
+    </connector_adminhtml_translator_product_index>       
+    
+    <connector_adminhtml_translator_category_index>
+        <reference name="content">
+            <block type="connector/adminhtml_content_category" name="category.grid" />
+        </reference>
+    </connector_adminhtml_translator_category_index>
+     
+    <connector_adminhtml_translator_view>
+        <reference name="content">
+            <block type = "connector/adminhtml_content" name = "content.grid" />
+        </reference>
+    </connector_adminhtml_translator_view>
+    
+    <connector_adminhtml_translator_logs>
+        <reference name="content">
+            <block type="connector/adminhtml_logs_view" name="actions.logs" />
+        </reference>
+    </connector_adminhtml_translator_logs>
+    
+    <connector_adminhtml_translator_errors>
+        <update handle="connector_adminhtml_translator_logs" />
+    </connector_adminhtml_translator_errors>
+    
+    <connector_adminhtml_instance_edit>
+        <reference name="head">
+            <action method="addJs">
+                <file>smartling/locales_bulk_validation.js</file>
+            </action>
+            <action method="addJs">
+                <file>smartling/select_all.js</file>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="connector/adminhtml_instance_edit" name="create.translations" />
+        </reference>
+        <reference name="left">
+            <block type="connector/adminhtml_instance_tabs" name="projects.edit.tabs" />
+        </reference>
+    </connector_adminhtml_instance_edit>
+    
+    <adminhtml_cms_page_edit>
+        <reference name="head">
+            <action method="addJs"><file>smartling/select_all.js</file></action>
+        </reference>
+        <reference name = "cms_page_edit_tabs">
+            <block type="connector/adminhtml_cms_page_edit_tab_translations" name="cms_page_edit_tab_translations" />
+            <action method="addTab"><name>translation_section</name><block>connector/adminhtml_cms_page_edit_tab_translations</block></action>
+        </reference>
+    </adminhtml_cms_page_edit>
+        
+    <adminhtml_cms_block_edit>
+        <reference name="head">
+            <action method="addJs"><file>smartling/select_all.js</file></action>
+        </reference>
+    </adminhtml_cms_block_edit>    
+    
+   <adminhtml_catalog_product_edit>
+        <reference name="head">
+            <action method="addJs"><file>smartling/select_all.js</file></action>
+        </reference>
+        <reference name="product_tabs">
+            <block type="connector/adminhtml_catalog_product_edit_tab_translations" name="catalog_product_edit_tab_translations" />
+            <action method="addTab"><name>translation_section</name><block>connector/adminhtml_catalog_product_edit_tab_translations</block></action>
+        </reference>
+    </adminhtml_catalog_product_edit>   
+   
+    <adminhtml_catalog_product_new>
+        <reference name="head">
+            <action method="addJs"><file>smartling/select_all.js</file></action>
+        </reference>
+        <reference name="product_tabs">
+            <block type="connector/adminhtml_catalog_product_edit_tab_translations" name="catalog_product_edit_tab_translations" />
+            <action method="addTab"><name>translation_section</name><block>connector/adminhtml_catalog_product_edit_tab_translations</block></action>
+        </reference>
+    </adminhtml_catalog_product_new> 
+    
+    <adminhtml_catalog_category_edit>
+        <reference name="head">
+            <action method="addJs"><file>smartling/select_all.js</file></action>
+        </reference>
+        <reference name="head">
+            <action method="addJs"><file>smartling/content.js</file></action>
+        </reference>
+    </adminhtml_catalog_category_edit>
+    
+    <adminhtml_catalog_product_attribute_edit>
+        <reference name="head">
+            <action method="addJs"><file>smartling/select_all.js</file></action>
+        </reference>
+        <reference name="attribute_edit_tabs">
+            <block type="connector/adminhtml_catalog_product_attributes_edit_tab_translations" after="labels" name="tab_translations"/>
+            <action method="addTabAfter">
+                <name>translation_section</name>
+                <block>tab_translations</block>
+                <after>labels</after>
+            </action>
+        </reference>
+    </adminhtml_catalog_product_attribute_edit>
+    
+    <connector_adminhtml_projects_new>
+        <reference name="left">
+            <block type="connector/adminhtml_projects_new_tabs" name="projects.edit.tabs" />
+        </reference>
+        <reference name="content">
+            <block type="connector/adminhtml_projects_new" name="projects" />
+        </reference>
+    </connector_adminhtml_projects_new>
+    
+    <connector_adminhtml_projects_edit>
+        <reference name="head">
+            <action method="addJs">
+                <file>smartling/locales_validation.js</file>
+            </action>
+        </reference>
+        <reference name="left">
+            <block type="connector/adminhtml_projects_edit_tabs" name="projects.edit.tabs" />
+        </reference>
+        <reference name="content">
+            <block type="connector/adminhtml_projects_edit" name="projects" />
+        </reference>
+    </connector_adminhtml_projects_edit>
+    
+    <connector_adminhtml_attributes_product>
+        <reference name="content">
+            <block type="connector/adminhtml_catalog_product_attributes" name="product_attributes"/>
+            <block type="core/template" template="connector/adminhtml/widget/grid/translate_status.phtml" name="translate_status">
+                <action method="setData">
+                    <name>entity_type</name>
+                    <value>product</value>
+                </action>
+            </block>
+        </reference>
+    </connector_adminhtml_attributes_product>
+    
+    <connector_adminhtml_attributes_category>
+        <reference name="content">
+            <block type="connector/adminhtml_catalog_category_attributes" name="product_attributes" />
+            <block type="core/template" template="connector/adminhtml/widget/grid/translate_status.phtml" name="translate_status">
+                <action method="setData">
+                    <name>entity_type</name>
+                    <value>category</value>
+                </action>
+            </block>
+        </reference>
+    </connector_adminhtml_attributes_category>
+    
+    <connector_adminhtml_fields_pages>
+        <reference name="content">
+            <block type="connector/adminhtml_cms_page_fields" name="page_fields" />
+            <block type="core/template" template="connector/adminhtml/widget/grid/translate_status.phtml" name="translate_status">
+                <action method="setData">
+                    <name>entity_type</name>
+                    <value>cmsPage</value>
+                </action>
+            </block>
+        </reference>
+    </connector_adminhtml_fields_pages>
+    
+    <connector_adminhtml_fields_blocks>
+        <reference name="content">
+            <block type="connector/adminhtml_cms_block_fields" name="block_fields" />
+            <block type="core/template" template="connector/adminhtml/widget/grid/translate_status.phtml" name="translate_status">
+                <action method="setData">
+                    <name>entity_type</name>
+                    <value>cmsBlock</value>
+                </action>
+            </block>
+        </reference>
+    </connector_adminhtml_fields_blocks>
+    
+</layout>

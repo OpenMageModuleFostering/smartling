@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<config>
+    <modules>
+        <Smartling_Connector>
+            <active>true</active>
+            <codePool>community</codePool>
+        </Smartling_Connector>
+    </modules>
+</config>

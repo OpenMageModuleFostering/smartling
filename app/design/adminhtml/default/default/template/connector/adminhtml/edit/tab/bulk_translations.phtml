@@ -1,0 +1,60 @@
+<?php
+    $options = $this->getOptions();
+    $localesCounter = 0;
+?>
+<table>
+    <tbody>
+        <?php  foreach ($options as $projectId => $projectData) :?>
+            <tr>
+                <td colspan="3">
+                    <b><?php echo $projectData['name'];?></b>
+                </td> 
+            </tr>
+            <?php  
+                if(sizeof($projectData['locales']))
+                foreach ($projectData['locales'] as $storeId => $locale): 
+                $localesCounter++;    
+                $element_id = 'locales_'  . $this->getEntityType() . '_' . $projectId . '_' . $storeId;
+                
+            ?>
+            <tr>
+                <td class="value" nowrap>
+                    <input id="<?php echo $element_id;?>" 
+                           type="checkbox" 
+                           name="locales[<?php echo $projectId;?>][]" 
+                           value="<?php echo $storeId; ?>" 
+                           class="sl-required-entry-bulk locales"/>
+                    <label for='<?php echo $element_id;?>' style="display:inline;"> 
+                        <?php echo $locale['name'];?>
+                    </label>
+                </td> 
+            </tr>
+            <?php  endforeach; ?>       
+        <?php  endforeach; ?>       
+            
+    </tbody>
+    <tfoot>
+    <?php
+        if($localesCounter>1):
+    ?>
+        <tr>
+            <td colspan="3">
+                <p>
+                    <a href="javascript:void(0)" onclick="selectAll(this);">
+                        <span><?php echo Mage::helper('connector')->__('Check All'); ?></span>
+                        <span style="display:none"><?php echo Mage::helper('connector')->__('Uncheck All'); ?></span>
+                    </a>
+                </p>
+            </td>
+        </tr>
+    <?php
+        else:
+    ?>
+        <tr>
+            <td colspan="3">&nbsp;</td>
+        </tr>
+    <?php    
+        endif;
+    ?>
+    </tfoot>
+</table>

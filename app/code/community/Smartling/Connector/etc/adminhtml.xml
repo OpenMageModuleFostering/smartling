@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<config>
+    <menu>
+        <smartling translate="title" module="connector">
+            <title>Smartling</title>
+            <sort_order>70</sort_order>
+            <children>
+                <all_content translate="title" module="connector">
+                    <title>Submissions</title>
+                    <sort_order>0</sort_order>
+                    <action>smartling/adminhtml_translator/all</action>
+                </all_content>
+                <instance translate="title" module="connector">
+                    <title>Smartling Bulk Submit</title>
+                    <sort_order>1</sort_order>
+                    <action>smartling/adminhtml_instance/new</action>
+                </instance>                
+                <logs translate="title" module="connector">
+                    <title>Logs</title>
+                    <sort_order>50</sort_order>
+                    <action>smartling/adminhtml_translator/logs</action>
+                </logs>
+            </children>
+        </smartling>
+        <system>
+            <children>
+                <smartling translate="title">
+                    <title>Smartling Settings</title>
+                    <sort_order>95</sort_order>
+                    <children>
+                        <projects translate="title" module="connector">
+                            <title>Settings Profiles</title>
+                            <sort_order>1</sort_order>
+                            <action>smartling/adminhtml_projects/index</action>
+                        </projects>                
+                        <attributes translate="title" module="connector">
+                            <title>Fields for Translation</title>
+                            <sort_order>2</sort_order>
+                            <children>
+                                <products translate="title">
+                                    <title>Products Attributes</title>
+                                    <sort_order>1</sort_order>
+                                    <action>smartling/adminhtml_attributes/product</action>
+                                </products>
+                                <categories translate="title">
+                                    <title>Categories Attributes</title>
+                                    <sort_order>2</sort_order>
+                                    <action>smartling/adminhtml_attributes/category</action>
+                                </categories>
+                                <cms_pages translate="title">
+                                    <title>CMS Pages Fields</title>
+                                    <sort_order>3</sort_order>
+                                    <action>smartling/adminhtml_fields/pages</action>
+                                </cms_pages>
+                                <cms_blocks translate="title">
+                                    <title>CMS Blocks Fields</title>
+                                    <sort_order>4</sort_order>
+                                    <action>smartling/adminhtml_fields/blocks</action>
+                                </cms_blocks>
+                            </children>
+                        </attributes>
+                    </children>
+                </smartling>
+            </children>
+        </system>
+    </menu>
+    <acl>
+        <resources>
+            <all>
+                <title>Allow for All</title>
+            </all> 
+            <admin>
+                <children>
+                    <smartling module="connector">
+                        <title>Smartling</title>
+                        <sort_order>170</sort_order>                        
+                        <children>
+                            <all_content translate="title" module="connector">
+                                <title>Submissions</title>
+                                <sort_order>0</sort_order>                                
+                            </all_content>
+                            <instance translate="title" module="connector">
+                                <title>Create new Translations</title>
+                                <sort_order>1</sort_order>                                
+                            </instance>                          
+                            <logs translate="title" module="connector">
+                                <title>Logs</title>
+                                <sort_order>50</sort_order>
+                                <children>
+                                    <action_logs translate="title" module="connector">
+                                        <title>Actions Log</title>
+                                        <sort_order>0</sort_order>                                        
+                                    </action_logs>
+                                </children>
+                            </logs>
+                        </children>
+                    </smartling>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <smartling translate="title" module="connector">
+                                        <title>Smartling Section</title>
+                                        <sort_order>1</sort_order>                                        
+                                    </smartling>                                    
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                </children>
+            </admin>           
+        </resources>
+    </acl>
+</config>

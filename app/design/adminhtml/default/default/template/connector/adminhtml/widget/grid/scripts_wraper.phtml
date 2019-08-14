@@ -1,0 +1,7 @@
+<script>
+    varienGrid.prototype.initGrid  = varienGrid.prototype.initGrid.wrap(function(parentMethod){
+        parentMethod.call(this);
+        new CheckStatuses();
+    });
+</script>
+    

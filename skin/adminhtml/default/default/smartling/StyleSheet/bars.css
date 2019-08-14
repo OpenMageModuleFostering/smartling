@@ -1,0 +1,19 @@
+.bar-loading { background-image:url(../images/sm_loader.gif); background-repeat:no-repeat;}
+.bar-default-wraper {
+    background-color:#fff;
+    border:solid 1px #999999;
+    width:133px; 
+    height: 15px; 
+    border-radius:3px; 
+    float:left;
+}
+.bar-status {
+    background-color:#70aebf;
+    height:100%;
+    display:none;
+}
+.cell-percent {
+    width:25%; 
+    text-align:center; 
+    float:right;
+}

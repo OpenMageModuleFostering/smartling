@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<config>
+    <tabs>
+        <smartling translate="label" module="connector">
+            <label>Smartling Translations</label>
+            <sort_order>400</sort_order>
+        </smartling>
+    </tabs>
+    <sections>
+        <smartling translate="label" module="connector">
+            <class>separator-top</class>
+            <label>Smartling Settings</label>
+            <tab>smartling</tab>
+            <sort_order>100</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <settings translate="label" module="connector">
+                    <label>Basic Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <test_connection translate="label" module="connector">
+                            <label>Smartling Module Version</label>
+                            <frontend_type>button</frontend_type>
+                            <frontend_model>connector/adminhtml_system_config_version</frontend_model>
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </test_connection>
+                    </fields>
+                </settings>
+            </groups>
+        </smartling>
+        <dev>
+            <groups>
+                <smartling>
+                    <class>separator-top</class>
+                    <label>Smartling Settings</label>
+                    <tab>smartling</tab>
+                    <sort_order>1020</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <mode translate="label" module="connector">
+                            <label>Test Mode</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment>Test mode uploads content automatically</comment>
+                        </mode>
+                        <mock_data translate="title" module="connector">
+                            <label>Mock Data</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>80</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </mock_data>
+                        <log_file translate="title" module="connector">
+                            <label>Log File Name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>90</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </log_file>
+                        <log_level translate="title" module="connector">
+                            <label>Log Level</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>Smartling_Connector_Model_Source_Log_Level</source_model>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </log_level>
+                        <cache_statuses_life_time translate="title" module="connector">
+                            <label>Grid Cache Queries Life Time</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>120</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </cache_statuses_life_time>
+                    </fields>
+                </smartling>
+            </groups>
+        </dev>
+    </sections>
+</config>

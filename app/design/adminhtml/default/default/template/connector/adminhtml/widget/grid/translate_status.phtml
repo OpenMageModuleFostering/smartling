@@ -1,0 +1,11 @@
+<script>
+    function translateStatus(obj, attribute) {
+        var changeStatusUrl = '<?php echo $this->getUrl('*/*/changeStatus');?>';
+       
+        new Ajax.Request(changeStatusUrl, {
+            method: 'post',
+            parameters: {type: '<?php echo $this->getData('entity_type');?>', id: obj.value}
+        });
+    }
+</script>
+    
