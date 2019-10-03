@@ -1,16 +1,19 @@
 {
-    "name": "OpenMageModuleFostering/smartling",
+    "name": "OpenMageModuleFostering\/smartling",
     "type": "magento-module",
     "license": "Custom",
     "homepage": "",
     "description": "Smartling-Magento integration package",
     "authors": [
-    {
-        "name": "Dmitriy Studinskiy",
-        "email": "dms@smartling.com"
-    }
-],
+        {
+            "name": "Dmitriy Studinskiy",
+            "email": "dms@smartling.com"
+        }
+    ],
     "suggest": {
-        "magento-hackathon/magento-composer-installer": "*"
-    }
+        "magento-hackathon\/magento-composer-installer": "*"
+    },
+    "keywords": [
+        "openmage-module"
+    ]
 }
